@@ -1,0 +1,15 @@
+{
+  "title": "Sample Configuration",
+  "version": "1.0.0",
+  "settings": {
+    "theme": "dark",
+    "language": "en",
+    "notifications": true
+  },
+  "features": [
+    "File Download",
+    "Search Functionality",
+    "Offline Access",
+    "Cross-platform Support"
+  ]
+}
