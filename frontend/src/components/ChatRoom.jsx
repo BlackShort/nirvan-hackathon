@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../config/network';
 
 export const ChatRoom = ({ room, username, userId, socket, onLeaveRoom }) => {
   const [messages, setMessages] = useState([]);
@@ -23,7 +24,7 @@ export const ChatRoom = ({ room, username, userId, socket, onLeaveRoom }) => {
       const fetchMessages = async () => {
         setIsLoading(true);
         try {
-          const response = await axios.get(`http://localhost:5000/api/chat/${room}`);
+          const response = await axios.get(`${API_BASE_URL}/api/chat/${room}`);
           setMessages(response.data.data.messages);
         } catch (error) {
           console.error('Error fetching messages:', error);

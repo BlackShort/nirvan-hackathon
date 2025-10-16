@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../config/network';
 
 export const FileBrowser = () => {
   const [files, setFiles] = useState([]);
@@ -13,7 +14,7 @@ export const FileBrowser = () => {
     setError('');
     
     try {
-      const response = await axios.get('http://localhost:5000/api/files/list');
+      const response = await axios.get(`${API_BASE_URL}/api/files/list`);
       setFiles(response.data.data.files);
     } catch (err) {
       console.error('Error fetching files:', err);
@@ -26,7 +27,7 @@ export const FileBrowser = () => {
   // Download file
   const downloadFile = async (filename) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/files/download/${filename}`, {
+      const response = await axios.get(`${API_BASE_URL}/api/files/download/${filename}`, {
         responseType: 'blob'
       });
 

@@ -27,16 +27,22 @@ connectDB();
 app.use(express.json());
 app.use(cookieParser());
 
-// Define the whitelist of allowed origins without double quotes
-const allowedOrigins = ['http://localhost:5173'];
+// Define the whitelist of allowed origins for network access
+const allowedOrigins = [
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+    'http://192.168.137.135:5173', // Your local network IP
+    'http://0.0.0.0:5173'
+];
 
 // Enable CORS middleware with the configured options
 app.use(cors({
     origin: (origin, callback) => {
-        // Use req.header('Origin') instead of origin directly
+        // Allow requests with no origin (mobile apps, desktop apps, etc.)
         if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
+            console.log('Blocked origin:', origin);
             callback(new Error("Not allowed by CORS"));
         }
     },

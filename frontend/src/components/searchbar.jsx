@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { API_BASE_URL } from '../config/network';
 
 export const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,12 +18,12 @@ export const SearchBar = () => {
     setChatHistory(prev => [...prev, { type: 'query', content: currentQuery }]);
 
     try {
-      const response = await fetch('http://localhost:8000/query', {
+      const response = await fetch(`${API_BASE_URL}/api/search`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ question: currentQuery })
+        body: JSON.stringify({ q: currentQuery })
       });
       const data = await response.json();
 

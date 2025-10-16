@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import io from 'socket.io-client';
 import { ChatRoom } from './ChatRoom';
+import { API_BASE_URL, SOCKET_URL } from '../config/network';
 
 export const ChatSystem = () => {
   const [selectedRoom, setSelectedRoom] = useState(null);
@@ -33,7 +34,7 @@ export const ChatSystem = () => {
   // Initialize socket connection
   useEffect(() => {
     if (username && userId) {
-      const newSocket = io('http://localhost:5000', {
+      const newSocket = io(SOCKET_URL, {
         withCredentials: true
       });
 
@@ -61,7 +62,7 @@ export const ChatSystem = () => {
   const fetchRooms = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/api/chat/rooms');
+      const response = await axios.get(`${API_BASE_URL}/api/chat/rooms`);
       setRooms(response.data.data.rooms);
     } catch (error) {
       console.error('Error fetching rooms:', error);

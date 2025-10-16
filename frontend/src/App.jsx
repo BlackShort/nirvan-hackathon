@@ -3,6 +3,7 @@ import { SearchBar } from './components/searchbar'
 import { FileBrowser } from './components/FileBrowser'
 import { ChatSystem } from './components/ChatSystem'
 import { OfflineMaps } from './components/OfflineMaps'
+import { NetworkStatus } from './components/NetworkStatus'
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('search')
@@ -94,6 +95,9 @@ const App = () => {
           </div>
         ) : null}
       </div>
+      
+      {/* Network Status Component */}
+      <NetworkStatus />
     </div>
   )
 }
