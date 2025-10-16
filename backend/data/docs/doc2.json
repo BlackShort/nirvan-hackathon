@@ -1,0 +1,5 @@
+{
+  "id": "doc2",
+  "title": "Deploying the system",
+  "content": "To deploy Internet-in-a-Box, copy the package to a small server, run the index builder, and start the HTTP server. Optionally enable local network sharing and periodic sync when connectivity returns."
+}

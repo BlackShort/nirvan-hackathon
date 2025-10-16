@@ -1,0 +1,5 @@
+{
+  "id": "doc3",
+  "title": "Search and retrieval",
+  "content": "The system provides full-text search with ranked results and snippets. Indexes are small and can be rebuilt from local JSON content or imported dumps when online."
+}

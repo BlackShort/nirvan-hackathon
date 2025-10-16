@@ -1,0 +1,5 @@
+{
+  "id": "doc1",
+  "title": "What is Internet-in-a-Box",
+  "content": "Internet-in-a-Box is a portable offline knowledge server containing datasets like Wikipedia, documentation, and learning content to provide access when connectivity is unavailable. It includes search, retrieval, and lightweight collaboration over a LAN."
+}
