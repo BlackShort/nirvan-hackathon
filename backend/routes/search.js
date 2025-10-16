@@ -6,7 +6,7 @@ export const searchRouter = express.Router();
 // @desc    Search a query
 // @route   POST /api/search/search
 // @access  Public
-searchRouter.post('/search', searchQuery);
+searchRouter.post('/', searchQuery);
 
 // @desc    Search a document by ID
 // @route   POST /api/search/:id

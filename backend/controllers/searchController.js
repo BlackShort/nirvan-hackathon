@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import ollama from 'ollama';
 
 const INDEX_PATH = path.resolve('./data/index.json');
 const DOCS_PATH = path.resolve('./data/docs.json');
@@ -40,23 +41,21 @@ function simpleSearch(query, index) {
 
 export async function searchQuery(req, res) {
   const { q } = req.body;
-  if (!q) return res.status(400).json({ error: 'Missing query parameter `q` in body' });
+  if (!q) return res.status(400).json({ error: 'Missing query parameter `q`' });
 
-  const idx = loadIndex();
-  if (!idx) return res.status(500).json({ error: 'Search index not built. Run `npm run build-index`' });
+  try {
+    const response = await ollama.chat({
+      model: 'llama3:8b', // or 'llama3:8b'
+      messages: [{ role: 'user', content: q }]
+    });
 
-  const results = simpleSearch(q, idx);
-  const out = results.map(r => {
-    const doc = docs[r.ref] || {};
-    return {
-      id: r.ref,
-      score: r.score,
-      title: doc.title || '',
-      snippet: doc.content ? doc.content.slice(0, 300) : ''
-    };
-  });
+    console.log('Ollama response:', response.message.content);
 
-  res.json({ query: q, hits: out });
+    res.json({ answer: response.message.content });
+  } catch (err) {
+    console.error('Ollama error:', err);
+    res.status(500).json({ error: 'Failed to get response from Ollama' });
+  }
 }
 
 export async function searchDocument(req, res) {
