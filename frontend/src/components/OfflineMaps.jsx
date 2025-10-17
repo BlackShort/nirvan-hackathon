@@ -176,10 +176,10 @@ export const OfflineMaps = () => {
                 const location = DEFAULT_LOCATIONS.find(loc => loc.name === e.target.value);
                 if (location) handleLocationChange(location);
               }}
-              className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="text-gray-700  w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               {DEFAULT_LOCATIONS.map((location) => (
-                <option key={location.name} value={location.name}>
+                <option key={location.name} value={location.name} className="text-gray-800">
                   {location.name}
                 </option>
               ))}
@@ -194,10 +194,10 @@ export const OfflineMaps = () => {
             <select
               value={mapSource}
               onChange={(e) => setMapSource(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="text-gray-700 w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               {Object.entries(MAP_SOURCES).map(([key, source]) => (
-                <option key={key} value={key}>
+                <option key={key} value={key} className='text-gray-700 '>
                   {source.name}
                 </option>
               ))}
@@ -327,19 +327,6 @@ export const OfflineMaps = () => {
             ))}
           </MapContainer>
         </div>
-      </div>
-
-      {/* Instructions */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h3 className="text-lg font-semibold text-blue-900 mb-2">How to Use Offline Maps</h3>
-        <ul className="text-sm text-blue-800 space-y-1">
-          <li>• Select a location from the dropdown or click on the map</li>
-          <li>• Choose your preferred map style (Street, Satellite, or Terrain)</li>
-          <li>• Click "Download Area" to cache tiles for offline use</li>
-          <li>• Click the 📍 button to find your current location</li>
-          <li>• Downloaded tiles will be available even without internet connection</li>
-          <li>• Use the Download Panel to manage your offline cache</li>
-        </ul>
       </div>
     </div>
   );

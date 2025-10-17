@@ -45,7 +45,7 @@ export const SearchBar = () => {
       {/* Header - only show when no chat history */}
       {!hasStartedChat && (
         <div className="text-center mb-8">
-          <h1 className="text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+          <h1 className="text-3xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2">
             Explore the World Offline
           </h1>
           <p className="text-gray-600 text-lg">Find what you're looking for</p>
@@ -54,7 +54,7 @@ export const SearchBar = () => {
 
       {/* Chat History */}
       {hasStartedChat && (
-        <div className="flex-1 w-full space-y-6 mb-6 pt-8">
+        <div className="flex-1 w-full space-y-6 mb-6 pt-28">
           {chatHistory.map((item, index) => (
             <div key={index}>
               {item.type === 'query' ? (
@@ -95,7 +95,7 @@ export const SearchBar = () => {
       )}
 
       {/* Search Bar - Fixed at bottom when chat started */}
-      <div className={`w-full flex items-center justify-center transition-all duration-500 ${hasStartedChat ? 'sticky bottom-0 pt-4 pb-6' : ''}`}>
+      <div className={`w-full flex items-center justify-center transition-all duration-500 ${hasStartedChat ? 'sticky bottom-0 p-2  md:pt-4  md:pb-6' : ''}`}>
         <div className={`w-full relative transition-all duration-300 ${hasStartedChat ? 'max-w-4xl mx-auto' : 'max-w-2xl'} ${isFocused && !hasStartedChat ? 'transform scale-105' : ''}`}>
           <div className={`flex items-center bg-white rounded-full shadow-lg border-2 transition-all duration-300 ${isFocused ? 'border-blue-400 shadow-blue-200/50 shadow-2xl' : 'border-gray-200 hover:border-gray-300'}`}>
             <div className="pl-6 pr-3">
