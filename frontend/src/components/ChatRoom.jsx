@@ -289,7 +289,7 @@ export const ChatRoom = ({ room, username, userId, socket, onLeaveRoom }) => {
             value={newMessage}
             onChange={(e) => handleTyping(e.target.value)}
             placeholder={`Message ${room}...`}
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="flex-1 px-4 py-2 text-neutral-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             maxLength={1000}
           />
           <button

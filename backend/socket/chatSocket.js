@@ -4,12 +4,7 @@ import { saveMessage, CHAT_ROOMS } from '../controllers/chatController.js';
 export const setupSocketIO = (server) => {
   const io = new Server(server, {
     cors: {
-      origin: [
-        "http://localhost:5173",
-        "http://127.0.0.1:5173", 
-        "http://192.168.137.135:5173", // Your local network IP
-        "http://0.0.0.0:5173"
-      ],
+      origin: true, 
       methods: ["GET", "POST"],
       credentials: true
     }
